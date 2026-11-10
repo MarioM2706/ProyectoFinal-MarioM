@@ -1,4 +1,4 @@
-[![Comprobar PHP](https://github.com/MarioM2706/Proyecto-servidor-MarioM/actions/workflows/ci.yml/badge.svg)](https://github.com/MarioM2706/Proyecto-servidor-MarioM/actions/workflows/ci.yml)
+[![Comprobar sintaxis PHP](https://github.com/MarioM2706/ProyectoFinal-MarioM/actions/workflows/ci.yml/badge.svg)](https://github.com/MarioM2706/ProyectoFinal-MarioM/actions/workflows/ci.yml)
 # Proyecto Final Servidor
 
 ## Desarrollador:
