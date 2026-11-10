@@ -1,0 +1,16 @@
+name: Comprobar sintaxis PHP
+
+on: [push]
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Comprobar sintaxis de todos los archivos PHP
+        run: find . -type f -name "*.php" -exec php -l {} \;
