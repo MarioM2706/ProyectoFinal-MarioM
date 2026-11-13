@@ -26,6 +26,43 @@
       </header>
 
       <form class="login-form" action="#" method="POST">
+        <!-- Nombre de usuario-->
+        <div class="input-group">
+          <label for="nombre">Nombre del agente</label>
+          <input 
+            type="text" 
+            id="nombre" 
+            name="nombre" 
+            placeholder="Black panther" 
+            required
+          >
+        </div>
+
+        <!-- Apellidos de usuario-->
+        <div class="input-group">
+          <label for="apellidos">Apellidos del agente</label>
+          <input 
+            type="text" 
+            id="apellidos" 
+            name="apellidos" 
+            placeholder="Stark Maximoff" 
+            required
+          >
+        </div>
+
+        <!-- Nombre de usuario-->
+        <div class="input-group">
+          <label for="dni">Dni del agente</label>
+          <input 
+            type="text" 
+            id="dni" 
+            name="dni" 
+            placeholder="112233445A" 
+            required
+            maxlength="10"
+          >
+        </div>
+
         <div class="input-group">
           <label for="email">Correo electrónico o ID de Agente</label>
           <input 
@@ -50,10 +87,10 @@
 
         <div class="form-options">
           <label class="remember-me">
-            <input type="checkbox" name="remember">
-            <span>Recordar dispositivo</span>
+           <!-- <input type="checkbox" name="remember">
+            <span>Recordar dispositivo</span>-->
           </label>
-          <a href="#" class="forgot-link">¿Olvidaste tu clave?</a>
+          <!--<a href="#" class="forgot-link">¿Olvidaste tu clave?</a>-->
         </div>
 
         <button type="submit" class="btn-submit">REGISTRARSE</button>
