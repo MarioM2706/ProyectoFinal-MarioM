@@ -13,6 +13,7 @@
     $_SESSION['nombre'] = $nombre;
     $_SESSION['apellidos'] = $apellidos;
     $_SESSION['email'] = $email;
+    $_SESSION['registrado'] = false;
 
     // Consulta
     $consulta="SELECT * FROM usuario WHERE nombre='$nombre' AND dni='$dni'";
@@ -29,6 +30,7 @@
             header("LOCATION:index.php");
     }
     elseif (mysqli_num_rows($result)==1) {
+        $_SESSION['registrado'] = true;
         header("LOCATION:registro.php");
        
     }

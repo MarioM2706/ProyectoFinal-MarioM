@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="css/estilo_index.css">
 </head>
 <body>
+  <!-- Iniciamos sesion -->
+   <?php session_start() ?>
   <main class="login-container">
     <section class="login-card">
       <!-- Reactor Arc decorativo -->
@@ -20,6 +22,14 @@
 
       <header class="login-header">
         <span class="badge">S.H.I.E.L.D. &bull; NIVEL DE ACCESO 7</span>
+        <h4 style="color: red;">
+            <?php 
+                if (isset($_SESSION['registrado']) && $_SESSION['registrado'] === true) { 
+                      echo "Usuario ya registrado";
+                      unset($_SESSION['registrado']); // Borra el aviso para que no siga saliendo si recargan la página
+                  } 
+              ?>
+          </h4><br>
         <h1>STARK BISTRO</h1>
         <p>Registrate para gestionar tus reservas y recompensas del Multiverso</p>
       </header>

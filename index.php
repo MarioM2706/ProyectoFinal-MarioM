@@ -25,7 +25,7 @@
         <p>Inicia sesión para gestionar tus reservas y recompensas del Multiverso</p>
       </header>
 
-      <form class="login-form" action="#" method="POST">
+      <form class="login-form" action="Comprobar_iniciosesion.php" method="POST">
         <div class="input-group">
           <label for="email">Correo electrónico o ID de Agente</label>
           <input 
@@ -48,13 +48,13 @@
           >
         </div>
 
-        <div class="form-options">
+       <!-- <div class="form-options">
           <label class="remember-me">
             <input type="checkbox" name="remember">
             <span>Recordar dispositivo</span>
           </label>
           <a href="#" class="forgot-link">¿Olvidaste tu clave?</a>
-        </div>
+        </div>-->
 
         <button type="submit" class="btn-submit">ENTRAR AL RESTAURANTE</button>
       </form>
