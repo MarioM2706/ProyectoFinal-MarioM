@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2026 a las 12:06:38
+-- Tiempo de generación: 13-11-2026 a las 12:10:50
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -116,6 +116,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`dni`, `contra`, `baneado`, `rol`, `email`, `nombre`, `apellidos`) VALUES
 ('112233445J', '27062006', 0, 0, 'deadpool@gmail.com', 'deadpool', 'dead pool'),
+('2277991M', 'admin', 0, 2, 'admin@gmail.com', 's0r4x', 'mart'),
 ('445533221N', '12345678', 0, 1, 'wanda@gmail.com', 'wanda', 'maximoff'),
 ('556677889H', '12345678', 1, 0, 'vision@gmail.com', 'vision', 'stark'),
 ('778855339S', '00000000', 0, 1, 'stark@gmail.com', 'tony', 'stark');
