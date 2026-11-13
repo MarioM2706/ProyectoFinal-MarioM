@@ -18,13 +18,12 @@
         <span class="brand-badge">S.H.I.E.L.D.</span>
         <h1>STARK BISTRO</h1>
       </div>
-
       <nav class="nav-links" aria-label="Menú principal de administración">
-        <a href="encargado.html">Inicio</a>
-        <a href="gestionar-usuarios.html">Gestionar Usuarios</a>
-        <a href="gestionar-productos.html">Gestionar Productos</a>
-        <a href="gestionar-cuentas.html" class="active">Gestionar Cuentas</a>
-        <a href="index.html" class="btn-logout">Cerrar Sesión</a>
+        <a href="index.php" class="active">Inicio</a>
+        <a href="gestionUsuarios.php">Gestionar Usuarios</a>
+        <a href="gestionProductos.php">Gestionar Productos</a>
+        <a href="cuentas.php">Gestionar Cuentas</a>
+        <a href="#" class="btn-logout">Cerrar Sesión</a>
       </nav>
     </div>
   </header>
