@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="css/estilo_index.css">
 </head>
 <body>
-
   <main class="login-container">
     <section class="login-card">
       <!-- Reactor Arc decorativo -->
@@ -25,7 +24,7 @@
         <p>Registrate para gestionar tus reservas y recompensas del Multiverso</p>
       </header>
 
-      <form class="login-form" action="#" method="POST">
+      <form class="login-form" action="Comprobaregistro.php" method="POST">
         <!-- Nombre de usuario-->
         <div class="input-group">
           <label for="nombre">Nombre del agente</label>
