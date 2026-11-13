@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="../css/estilo_vercartayPedir.css">
 </head>
 <body>
+  <!-- Incluimos la seguridad -->
+   <?php include("seguridad_user.php"); ?>
+   
   <!-- Barra superior -->
   <header class="topbar">
     <div class="topbar-inner">

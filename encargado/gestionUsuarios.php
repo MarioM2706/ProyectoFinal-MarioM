@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../css/estilo_gestionusuario.css">
 </head>
 <body>
+  <!-- Incluimos la seguridad -->
+   <?php include("seguridad_encargado.php"); ?>
 
   <!-- Barra de navegación principal del encargado -->
   <header class="topbar">
