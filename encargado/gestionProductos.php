@@ -19,9 +19,9 @@
         <h1>STARK BISTRO</h1>
       </div>
       <nav class="nav-links" aria-label="Menú principal de administración">
-        <a href="index.php" class="active">Inicio</a>
+        <a href="index.php">Inicio</a>
         <a href="gestionUsuarios.php">Gestionar Usuarios</a>
-        <a href="gestionProductos.php">Gestionar Productos</a>
+        <a href="gestionProductos.php" class="active">Gestionar Productos</a>
         <a href="cuentas.php">Gestionar Cuentas</a>
         <a href="#" class="btn-logout">Cerrar Sesión</a>
       </nav>
