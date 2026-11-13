@@ -23,7 +23,7 @@
         <a href="gestionUsuarios.php">Gestionar Usuarios</a>
         <a href="gestionProductos.php">Gestionar Productos</a>
         <a href="cuentas.php">Gestionar Cuentas</a>
-        <a href="#" class="btn-logout">Cerrar Sesión</a>
+        <a href="../includes/cerrarsesion.php" class="btn-nav">Cerrar Sesion</a>
       </nav>
     </div>
   </header>

@@ -20,11 +20,11 @@
       </div>
 
       <nav class="nav-links" aria-label="Menú principal de administración">
-        <a href="index.php">Inicio</a>
-        <a href="gestionUsuarios.php" class="active">Gestionar Usuarios</a>
+        <a href="index.php" class="active">Inicio</a>
+        <a href="gestionUsuarios.php">Gestionar Usuarios</a>
         <a href="gestionProductos.php">Gestionar Productos</a>
         <a href="cuentas.php">Gestionar Cuentas</a>
-        <a href="#" class="btn-logout">Cerrar Sesión</a>
+        <a href="../includes/cerrarsesion.php" class="btn-nav">Cerrar Sesion</a>
       </nav>
     </div>
   </header>

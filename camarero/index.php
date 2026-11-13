@@ -21,7 +21,7 @@
       <nav class="nav-links">
         <a href="index.php" class="active">Control de Sala</a>
         <a href="carta.php">Carta</a>
-        <a href="#" class="btn-nav">Cerrar Sesion</a>
+        <a href="../includes/cerrarsesion.php" class="btn-nav">Cerrar Sesion</a>
       </nav>
     </div>
   </header>

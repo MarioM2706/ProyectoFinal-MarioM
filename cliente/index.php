@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="../css/estilo_vercartayPedir.css">
 </head>
 <body>
-
   <!-- Barra superior -->
   <header class="topbar">
     <div class="topbar-inner">
@@ -21,7 +20,8 @@
       <nav class="nav-links">
         <a href="#carta" class="active">Carta</a>
         <a href="#datos-pedido">Finalizar Pedido</a>
-        <a href="index.html" class="btn-nav">Acceso Agente</a>
+        <!--<a href="index.html" class="btn-nav">Acceso Agente</a>-->
+        <a href="../includes/cerrarsesion.php" class="btn-nav">Cerrar Sesion</a>
       </nav>
     </div>
   </header>

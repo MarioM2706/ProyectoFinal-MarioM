@@ -10,6 +10,9 @@
     $email = $_POST["email"];
     $pwd = $_POST["password"];
 
+    // Variables de sesion
+    $_SESSION['fallo'] = false;
+
     // Consulta
     $consulta="SELECT * FROM usuario WHERE email='$email' AND contra='$pwd'";
     //echo $consulta;
@@ -28,7 +31,7 @@
         $estadob = $fila['baneado'];
         // Si el usuario esta bloquedo vuelve al inicio de sesion, si no lo esta, continua al panel de cartas
         if($estadob==1){
-            $_SESSION['error'] = "El usuario esta bloqueado";
+            $_SESSION['fallo'] = true;
             header("LOCATION:index.php");
         }else{
             // Obtenemos todos los datos del usuario
@@ -64,8 +67,8 @@
     }
     // Si no existe
     elseif(mysqli_num_rows($result)==0){
+        $_SESSION['fallo'] = true;
         header("LOCATION:index.php");
-         $_SESSION['error'] = "El ususario no existe";
     }
 
     // Cerramos la conexion con la base de datos
