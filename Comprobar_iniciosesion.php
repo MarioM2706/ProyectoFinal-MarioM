@@ -29,7 +29,7 @@
         // Guardamos el estado de bloqueo en una variable php
         $fila = mysqli_fetch_array($result2);
         $estadob = $fila['baneado'];
-        // Si el usuario esta bloquedo vuelve al inicio de sesion, si no lo esta, continua al panel de cartas
+        // Si el usuario esta bloquedo vuelve al inicio de sesion
         if($estadob==1){
             $_SESSION['fallo'] = true;
             header("LOCATION:index.php");
@@ -51,7 +51,7 @@
              $_SESSION['password'] = $datosUsuario['contra'];
              $_SESSION['ban'] = $datosUsuario['baneado'];
 
-             // Segun su rol va a un panel diferente admin=panel de administracion user=listadocartas
+             // Segun su rol va a un panel diferente admin=panel de administracion cliente=pedir camarero=gestion de mesas
              if($_SESSION['rolu']==0){
                 header("LOCATION: cliente/index.php");
              }
