@@ -7,14 +7,14 @@
 
 
     // Variables locales
-    $email = $_POST["email"];
+    $dni = $_POST["dni"];
     $pwd = $_POST["password"];
 
     // Variables de sesion
     $_SESSION['fallo'] = false;
 
     // Consulta
-    $consulta="SELECT * FROM usuario WHERE email='$email' AND contra='$pwd'";
+    $consulta="SELECT * FROM usuario WHERE dni='$dni' AND contra='$pwd'";
     //echo $consulta;
     $result=mysqli_query($conn, $consulta);
     echo mysqli_error($conn);
@@ -22,7 +22,7 @@
     // Comprobamos que el usuario existe
     if(mysqli_num_rows($result)==1){
         // Si existe comprobamos que no este bloqueado
-        $consulta2 = "SELECT baneado FROM usuario WHERE email='$email' AND contra='$pwd'";
+        $consulta2 = "SELECT baneado FROM usuario WHERE dni='$dni' AND contra='$pwd'";
         //echo $consulta;
         $result2=mysqli_query($conn, $consulta);
         echo mysqli_error($conn);
@@ -35,7 +35,7 @@
             header("LOCATION:index.php");
         }else{
             // Obtenemos todos los datos del usuario
-            $consultatotal = "SELECT * FROM usuario WHERE email='$email' AND contra='$pwd'";
+            $consultatotal = "SELECT * FROM usuario WHERE dni='$dni' AND contra='$pwd'";
             //echo $consulta;
             $result3=mysqli_query($conn, $consulta);
             echo mysqli_error($conn);

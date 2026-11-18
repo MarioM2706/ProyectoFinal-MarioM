@@ -37,12 +37,13 @@
 
       <form class="login-form" action="Comprobar_iniciosesion.php" method="POST">
         <div class="input-group">
-          <label for="email">Correo electrónico o ID de Agente</label>
+          <label for="dni">ID de Agente (dni)</label>
           <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            placeholder="tony@starkindustries.com" 
+            type="text" 
+            id="text" 
+            name="dni" 
+            placeholder="11223344A"
+            maxlength="10" 
             required
           >
         </div>

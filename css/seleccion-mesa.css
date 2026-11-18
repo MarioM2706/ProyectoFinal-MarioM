@@ -1,0 +1,602 @@
+:root {
+  --marvel-red: #e23636;
+  --marvel-dark-red: #9e1b1b;
+  --stark-gold: #f5b800;
+  --arc-cyan: #00e5ff;
+  --free-green: #4ade80;
+  --wakanda-purple: #c084fc;
+  --bg-dark: #0a0c10;
+  --card-bg: #131722;
+  --input-bg: #1c2230;
+  --text-light: #f4f6f9;
+  --text-muted: #9aa3b2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(226, 54, 54, 0.13), transparent 36%),
+    radial-gradient(circle at 85% 45%, rgba(0, 229, 255, 0.08), transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(245, 184, 0, 0.06), transparent 45%);
+  color: var(--text-light);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Barra superior */
+.topbar {
+  background-color: rgba(19, 23, 34, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--marvel-red);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.topbar-inner {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0.95rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-badge {
+  background-color: var(--marvel-red);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 0.22rem 0.55rem;
+  border-radius: 4px;
+}
+
+.brand h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 2.5px;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffffff;
+}
+
+.nav-links .btn-nav {
+  background-color: rgba(245, 184, 0, 0.14);
+  color: var(--stark-gold);
+  border: 1px solid rgba(245, 184, 0, 0.45);
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+}
+
+.nav-links .btn-nav:hover {
+  background-color: var(--stark-gold);
+  color: #0a0c10;
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1220px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  flex-grow: 1;
+}
+
+/* Encabezado */
+.hero-banner {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 2.8rem;
+}
+
+.badge {
+  display: inline-block;
+  background-color: rgba(226, 54, 54, 0.18);
+  color: var(--stark-gold);
+  border: 1px solid rgba(245, 184, 0, 0.4);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 0.3rem 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 0.85rem;
+}
+
+.hero-banner h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow: 2px 2px 0px var(--marvel-red);
+  line-height: 1.05;
+  margin-bottom: 0.6rem;
+}
+
+.hero-banner p {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  margin-bottom: 1.4rem;
+}
+
+/* Leyenda de estados */
+.legend-bar {
+  display: inline-flex;
+  gap: 1.3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-free {
+  background-color: var(--free-green);
+  box-shadow: 0 0 8px var(--free-green);
+}
+
+.dot-selected {
+  background-color: var(--arc-cyan);
+  box-shadow: 0 0 8px var(--arc-cyan);
+}
+
+.dot-occupied {
+  background-color: var(--marvel-red);
+  box-shadow: 0 0 8px var(--marvel-red);
+}
+
+/* Fieldset y títulos de pasos */
+.tables-fieldset {
+  border: none;
+  margin-bottom: 3rem;
+}
+
+.step-title {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.9rem;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  margin-bottom: 1.4rem;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--marvel-red);
+  color: #ffffff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  border: 1px solid rgba(245, 184, 0, 0.45);
+}
+
+/* Cuadrícula de mesas */
+.tables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 1.5rem;
+}
+
+.table-option {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.table-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.table-card-ui {
+  height: 100%;
+  background-color: var(--card-bg);
+  border: 2px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s, background-color 0.22s;
+  user-select: none;
+}
+
+.table-option:hover input[type="radio"]:not(:disabled) + .table-card-ui {
+  transform: translateY(-4px);
+  border-color: rgba(245, 184, 0, 0.55);
+}
+
+.table-option input[type="radio"]:focus-visible + .table-card-ui {
+  outline: 2px solid var(--arc-cyan);
+  outline-offset: 3px;
+}
+
+/* Estado: Mesa seleccionada por el cliente */
+.table-option input[type="radio"]:checked + .table-card-ui {
+  border-color: var(--arc-cyan);
+  background-color: rgba(0, 229, 255, 0.06);
+  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.25), 0 16px 35px rgba(0, 229, 255, 0.2);
+}
+
+/* Estado: Mesa ocupada (deshabilitada) */
+.table-option input[type="radio"]:disabled + .table-card-ui {
+  opacity: 0.52;
+  cursor: not-allowed;
+  border-color: rgba(226, 54, 54, 0.35);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.sector-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 0.24rem 0.6rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid currentColor;
+}
+
+.tag-gold { color: var(--stark-gold); }
+.tag-cyan { color: var(--arc-cyan); }
+.tag-purple { color: var(--wakanda-purple); }
+.tag-red { color: var(--marvel-red); }
+
+/* Etiqueta dinámica de estado de mesa */
+.availability-pill::after {
+  content: "DISPONIBLE";
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 0.24rem 0.6rem;
+  border-radius: 4px;
+  background-color: rgba(74, 222, 128, 0.14);
+  color: var(--free-green);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+}
+
+.table-option input[type="radio"]:checked + .table-card-ui .availability-pill::after {
+  content: "✓ SELECCIONADA";
+  background-color: var(--arc-cyan);
+  color: #0a0c10;
+  border-color: var(--arc-cyan);
+}
+
+.table-option input[type="radio"]:disabled + .table-card-ui .availability-pill::after {
+  content: "OCUPADA";
+  background-color: rgba(226, 54, 54, 0.18);
+  color: #ff7b7b;
+  border-color: rgba(226, 54, 54, 0.45);
+}
+
+.table-card-ui h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.65rem;
+  letter-spacing: 1.2px;
+  color: #ffffff;
+  margin-bottom: 0.45rem;
+}
+
+.table-desc {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.table-meta {
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.table-meta strong {
+  color: var(--stark-gold);
+}
+
+.zone {
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+/* Panel Paso 2: Comensales y datos */
+.booking-panel {
+  background-color: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 5px solid var(--stark-gold);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.panel-header h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.95rem;
+  letter-spacing: 1.4px;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.panel-header p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.3rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.input-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.input-group label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-light);
+}
+
+.input-group input[type="text"],
+.input-group input[type="tel"],
+.input-group select {
+  background-color: var(--input-bg);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  padding: 0.82rem 1rem;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.94rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.input-group input::placeholder {
+  color: #5c667a;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--arc-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.18);
+}
+
+/* Control numérico de comensales con botones - y + */
+.diner-control-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.quantity-stepper {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--input-bg);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.quantity-stepper:focus-within {
+  border-color: var(--arc-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.18);
+}
+
+.qty-btn {
+  width: 40px;
+  height: 44px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: none;
+  color: var(--stark-gold);
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s;
+  user-select: none;
+}
+
+.qty-btn:hover {
+  background-color: var(--marvel-red);
+  color: #ffffff;
+}
+
+.quantity-stepper input[type="number"] {
+  width: 56px;
+  height: 44px;
+  background-color: transparent;
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: center;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.quantity-stepper input[type="number"]::-webkit-outer-spin-button,
+.quantity-stepper input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-stepper input[type="number"]:focus {
+  outline: none;
+}
+
+.capacity-hint {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Botones de acción */
+.booking-actions {
+  margin-top: 2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-reset {
+  background-color: transparent;
+  color: var(--text-muted);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1.5px;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-reset:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, var(--marvel-red), var(--marvel-dark-red));
+  color: #ffffff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: 2px;
+  padding: 0.85rem 2.1rem;
+  border: 1px solid rgba(245, 184, 0, 0.4);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+.btn-submit:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(226, 54, 54, 0.45);
+}
+
+/* Pie de página */
+.main-footer {
+  text-align: center;
+  padding: 1.8rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Adaptación móvil */
+@media (max-width: 720px) {
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-panel {
+    padding: 1.5rem;
+  }
+
+  .booking-actions button {
+    width: 100%;
+  }
+
+  .hero-banner h2 {
+    font-size: 2.3rem;
+  }
+}
