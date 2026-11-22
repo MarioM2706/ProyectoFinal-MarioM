@@ -54,6 +54,7 @@
 
           <!-- Mesa 01: Disponible -->
           <label class="table-option">
+
             <input type="radio" name="mesa_seleccionada" value="mesa_01" required>
             <div class="table-card-ui">
               <div class="card-top">
@@ -65,6 +66,7 @@
                 <span class="capacity">Capacidad: <strong>Hasta 4 comensales</strong></span>
                 <span class="zone">Sector Central</span>
               </div>
+              <a class="btn-submit" href="https://www.crealitycloud.com/es/user/9270632290/model">Asignar Mesa</a>
             </div>
           </label>
 
