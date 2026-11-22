@@ -3,7 +3,7 @@
     $mesaocupar=$_GET['mesaocupar'];
 
     // Conectamos con la base de datos e iniciamos sesion
-    include("includes/conexion.php");
+    include __DIR__ . '/../includes/conexion.php';
     session_start();
 
     // Variable dni del usuario

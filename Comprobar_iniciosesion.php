@@ -53,7 +53,7 @@
 
              // Segun su rol va a un panel diferente admin=panel de administracion cliente=pedir camarero=gestion de mesas
              if($_SESSION['rolu']==0){
-                header("LOCATION: cliente/index.php");
+                header("LOCATION: cliente/comprobarMesa.php");
              }
 
              if($_SESSION['rolu']==1){

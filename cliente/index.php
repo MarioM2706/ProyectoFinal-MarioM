@@ -89,7 +89,7 @@
                       echo "<span class='capacity'>Capacidad: <strong>Hasta ".$row['comensales']." comensales</strong></span>";
                       echo "<span class='zone'>".$row['zona']."</span>";
               echo "</div>";
-              echo "<a class='btn-submit $botondesac' href='../mesa-cliente.php?mesaocupar=$cod' ".$ocu.">Asignar Mesa</a>";
+              echo "<a class='btn-submit $botondesac' href='mesa-cliente.php?mesaocupar=$cod' ".$ocu.">Asignar Mesa</a>";
               echo "</div>";
               echo "</label>";
             }
