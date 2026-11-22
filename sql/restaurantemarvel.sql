@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2026 a las 17:15:42
+-- Tiempo de generación: 22-11-2026 a las 18:35:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -205,6 +205,12 @@ ALTER TABLE `ronda`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `mesa`
+--
+ALTER TABLE `mesa`
+  ADD CONSTRAINT `mesa_ibfk_1` FOREIGN KEY (`dueño`) REFERENCES `usuario` (`dni`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `prodronda`

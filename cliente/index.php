@@ -74,6 +74,8 @@
               }else{
                 $ocu = "required";
               }
+
+              // Mostramos las mesas que hay en la base de datos
               $cod=$row['codMesa'];
               echo "<label class='table-option'>";
               echo "<input type='radio' name='mesa_seleccionada' value=".$row['codMesa']." ".$ocu.">";
@@ -87,7 +89,7 @@
                       echo "<span class='capacity'>Capacidad: <strong>Hasta ".$row['comensales']." comensales</strong></span>";
                       echo "<span class='zone'>".$row['zona']."</span>";
               echo "</div>";
-              echo "<a class='btn-submit $botondesac' href='bajas.php?codEliminar=$cod' ".$ocu.">Asignar Mesa</a><br><br>";
+              echo "<a class='btn-submit $botondesac' href='../mesa-cliente.php?mesaocupar=$cod' ".$ocu.">Asignar Mesa</a>";
               echo "</div>";
               echo "</label>";
             }
@@ -96,107 +98,9 @@
           //Cerramos la conexión
           mysqli_close($conn);
           ?>
-
-          <!-- Mesa 01: Disponible -->
-          <!--<label class="table-option">
-            <input type="radio" name="mesa_seleccionada" value="mesa_01" required>
-            <div class="table-card-ui">
-              <div class="card-top">
-                <span class="availability-pill"></span>
-              </div>
-              <h3>MESA 01 &mdash; TORRE STARK</h3>
-              <p class="table-desc">Mesa panorámica junto a la vitrina de armaduras Mark I–VII con iluminación reactor.</p>
-              <div class="table-meta">
-                <span class="capacity">Capacidad: <strong>Hasta 4 comensales</strong></span>
-                <span class="zone">Sector Central</span>
-              </div>
-              <a class="btn-submit" href="https://www.crealitycloud.com/es/user/9270632290/model">Asignar Mesa</a>
-            </div>
-          </label>
-
-          <!-- Mesa 02: Ocupada 
-          <label class="table-option">
-            <input type="radio" name="mesa_seleccionada" value="mesa_02" disabled>
-            <div class="table-card-ui">
-              <div class="card-top">
-                <span class="availability-pill"></span>
-              </div>
-              <h3>MESA 02 &mdash; ASGARD</h3>
-              <p class="table-desc">Mesa rústica de madera tallada presidida por una réplica del Mjölnir iluminada.</p>
-              <div class="table-meta">
-                <span class="capacity">Capacidad: <strong>Hasta 2 comensales</strong></span>
-                <span class="zone">Ala Norte</span>
-              </div>
-            </div>
-          </label>
-
-          <!-- Mesa 03: Disponible 
-          <label class="table-option">
-            <input type="radio" name="mesa_seleccionada" value="mesa_03" required>
-            <div class="table-card-ui">
-              <div class="card-top">
-                <span class="availability-pill"></span>
-              </div>
-              <h3>MESA 03 &mdash; WAKANDA</h3>
-              <p class="table-desc">Reservado semi-privado con acabados en negro mate y destellos púrpura de Vibranium.</p>
-              <div class="table-meta">
-                <span class="capacity">Capacidad: <strong>Hasta 4 comensales</strong></span>
-                <span class="zone">Zona VIP</span>
-              </div>
-            </div>
-          </label>
-
-          <!-- Mesa 04: Ocupada 
-          <label class="table-option">
-            <input type="radio" name="mesa_seleccionada" value="mesa_04" required>
-            <div class="table-card-ui">
-              <div class="card-top">
-                <span class="availability-pill"></span>
-              </div>
-              <h3>MESA 04 &mdash; SANCTUM</h3>
-              <p class="table-desc">Rincón místico bajo la vidriera del Sanctum Sanctorum, ideal para grupos tranquilos.</p>
-              <div class="table-meta">
-                <span class="capacity">Capacidad: <strong>Hasta 4 comensales</strong></span>
-                <span class="zone">Ala Oeste</span>
-              </div>
-            </div>
-          </label>
-
-          <!-- Mesa 05: Disponible (Mesa grande) 
-          <label class="table-option">
-            <input type="radio" name="mesa_seleccionada" value="mesa_05" required>
-            <div class="table-card-ui">
-              <div class="card-top">
-                <span class="availability-pill"></span>
-              </div>
-              <h3>MESA 05 &mdash; HELICARRIER</h3>
-              <p class="table-desc">Mesa imperial de mando diseñada para escuadrones completos y celebraciones de equipo.</p>
-              <div class="table-meta">
-                <span class="capacity">Capacidad: <strong>Hasta 6 comensales</strong></span>
-                <span class="zone">Puente de Mando</span>
-              </div>
-            </div>
-          </label>
-
-          <!-- Mesa 06: Disponible (2 plazas) 
-          <label class="table-option">
-            <input type="radio" name="mesa_seleccionada" value="mesa_06" required>
-            <div class="table-card-ui">
-              <div class="card-top">
-                <span class="availability-pill"></span>
-              </div>
-              <h3>MESA 06 &mdash; QUINJET</h3>
-              <p class="table-desc">Cabina acogedora para dos personas decorada con el escudo clásico de vibranium.</p>
-              <div class="table-meta">
-                <span class="capacity">Capacidad: <strong>Hasta 2 comensales</strong></span>
-                <span class="zone">Hangar Este</span>
-              </div>
-            </div>
-          </label>-->
-
         </div>
       </fieldset>
-      <button type="submit" class="btn-submit">Asignar Mesa</button>
+      <!--<button type="submit" class="btn-submit">Asignar Mesa</button>-->
     </form>
   </main>
 
