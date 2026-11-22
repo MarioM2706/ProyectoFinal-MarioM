@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2026 a las 12:10:50
+-- Tiempo de generación: 22-11-2026 a las 17:15:42
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `restaurantemarvel`
 --
+CREATE DATABASE IF NOT EXISTS `restaurantemarvel` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `restaurantemarvel`;
 
 -- --------------------------------------------------------
 
@@ -40,19 +42,24 @@ CREATE TABLE `cocina` (
 
 CREATE TABLE `mesa` (
   `codMesa` int(11) NOT NULL,
-  `ocupada` int(11) NOT NULL DEFAULT 0
+  `ocupada` int(11) NOT NULL DEFAULT 0,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
+  `comensales` int(11) NOT NULL,
+  `zona` varchar(255) NOT NULL,
+  `dueño` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `mesa`
 --
 
-INSERT INTO `mesa` (`codMesa`, `ocupada`) VALUES
-(1, 0),
-(2, 0),
-(3, 0),
-(4, 0),
-(5, 0);
+INSERT INTO `mesa` (`codMesa`, `ocupada`, `nombre`, `descripcion`, `comensales`, `zona`, `dueño`) VALUES
+(1, 0, 'Torre Stark', 'Mesa panorámica junto a la vitrina de armaduras Mark I–VII con iluminación reactor.', 4, 'Sector central', NULL),
+(2, 1, 'Asgard', 'Mesa rústica de madera tallada presidida por una réplica del Mjölnir iluminada.', 2, 'Zona norte', '112233445J'),
+(3, 0, 'Wakanda', 'Reservado semi-privado con acabados en negro mate y destellos púrpura de Vibranium.', 4, 'Zona VIP', NULL),
+(4, 0, 'Sanctum', 'Rincón místico bajo la vidriera del Sanctum Sanctorum, ideal para grupos tranquilos.', 4, 'Zona Oeste', NULL),
+(5, 0, 'Helicarrier', 'Mesa imperial de mando diseñada para escuadrones completos y celebraciones de equipo.', 6, 'Puente de Mando', NULL);
 
 -- --------------------------------------------------------
 
@@ -135,7 +142,8 @@ ALTER TABLE `cocina`
 -- Indices de la tabla `mesa`
 --
 ALTER TABLE `mesa`
-  ADD PRIMARY KEY (`codMesa`);
+  ADD PRIMARY KEY (`codMesa`),
+  ADD KEY `dueño` (`dueño`);
 
 --
 -- Indices de la tabla `prodronda`

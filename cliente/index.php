@@ -102,7 +102,7 @@
 
           <!-- Mesa 04: Ocupada -->
           <label class="table-option">
-            <input type="radio" name="mesa_seleccionada" value="mesa_04" disabled>
+            <input type="radio" name="mesa_seleccionada" value="mesa_04" required>
             <div class="table-card-ui">
               <div class="card-top">
                 <span class="availability-pill"></span>
