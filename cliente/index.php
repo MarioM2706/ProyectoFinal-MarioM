@@ -52,9 +52,53 @@
 
         <div class="tables-grid">
 
-          <!-- Mesa 01: Disponible -->
-          <label class="table-option">
+          <?php 
+            include __DIR__ . '/../includes/conexion.php';
 
+            //Lógica del fichero
+            $consulta="Select * from mesa";
+
+            $result=mysqli_query($conn,$consulta);
+
+            while ($row=mysqli_fetch_array($result)){
+              // Si la mesa esta ocupada $ocu=disabled si esta libre $ocu=required
+              $ocu = "required";
+              $estado = $row['ocupada'];
+
+              // Variables para deshabilitar el enlace si la mesa esta ocupada
+              $botondesac = "";
+
+              if($estado==1){
+                $ocu = "disabled";
+                $botondesac = "enlace-deshabilitado";
+              }else{
+                $ocu = "required";
+              }
+              $cod=$row['codMesa'];
+              echo "<label class='table-option'>";
+              echo "<input type='radio' name='mesa_seleccionada' value=".$row['codMesa']." ".$ocu.">";
+              echo "<div class='table-card-ui'>";
+             echo "<div class='card-top'>";
+              echo "<span class='availability-pill'></span>";
+              echo "</div>";
+                     echo "<h3>MESA ".$row['codMesa']." &mdash; ".$row['nombre']."</h3>";
+                      echo "<p class='table-desc'>".$row['descripcion']."</p>";
+                      echo "<div class='table-meta'>";
+                      echo "<span class='capacity'>Capacidad: <strong>Hasta ".$row['comensales']." comensales</strong></span>";
+                      echo "<span class='zone'>".$row['zona']."</span>";
+              echo "</div>";
+              echo "<a class='btn-submit $botondesac' href='bajas.php?codEliminar=$cod' ".$ocu.">Asignar Mesa</a><br><br>";
+              echo "</div>";
+              echo "</label>";
+            }
+
+
+          //Cerramos la conexión
+          mysqli_close($conn);
+          ?>
+
+          <!-- Mesa 01: Disponible -->
+          <!--<label class="table-option">
             <input type="radio" name="mesa_seleccionada" value="mesa_01" required>
             <div class="table-card-ui">
               <div class="card-top">
@@ -70,7 +114,7 @@
             </div>
           </label>
 
-          <!-- Mesa 02: Ocupada -->
+          <!-- Mesa 02: Ocupada 
           <label class="table-option">
             <input type="radio" name="mesa_seleccionada" value="mesa_02" disabled>
             <div class="table-card-ui">
@@ -86,7 +130,7 @@
             </div>
           </label>
 
-          <!-- Mesa 03: Disponible -->
+          <!-- Mesa 03: Disponible 
           <label class="table-option">
             <input type="radio" name="mesa_seleccionada" value="mesa_03" required>
             <div class="table-card-ui">
@@ -102,7 +146,7 @@
             </div>
           </label>
 
-          <!-- Mesa 04: Ocupada -->
+          <!-- Mesa 04: Ocupada 
           <label class="table-option">
             <input type="radio" name="mesa_seleccionada" value="mesa_04" required>
             <div class="table-card-ui">
@@ -118,7 +162,7 @@
             </div>
           </label>
 
-          <!-- Mesa 05: Disponible (Mesa grande) -->
+          <!-- Mesa 05: Disponible (Mesa grande) 
           <label class="table-option">
             <input type="radio" name="mesa_seleccionada" value="mesa_05" required>
             <div class="table-card-ui">
@@ -134,7 +178,7 @@
             </div>
           </label>
 
-          <!-- Mesa 06: Disponible (2 plazas) -->
+          <!-- Mesa 06: Disponible (2 plazas) 
           <label class="table-option">
             <input type="radio" name="mesa_seleccionada" value="mesa_06" required>
             <div class="table-card-ui">
@@ -148,7 +192,7 @@
                 <span class="zone">Hangar Este</span>
               </div>
             </div>
-          </label>
+          </label>-->
 
         </div>
       </fieldset>

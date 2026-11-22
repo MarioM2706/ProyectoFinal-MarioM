@@ -600,3 +600,11 @@ body {
     font-size: 2.3rem;
   }
 }
+
+.enlace-deshabilitado {
+  pointer-events: none;
+  cursor: default;
+  color: gray;
+  text-decoration: none;
+}
+
