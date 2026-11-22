@@ -37,7 +37,7 @@
     </section>
 
     <!-- Formulario completo que engloba la carta y los datos de entrega -->
-    <form class="order-form" action="#" method="POST">
+    <form class="order-form" action="../comprobar_ronda.php" method="POST">
       
       <!-- Contenedor general de la carta -->
       <section id="carta" aria-label="Carta del restaurante">
