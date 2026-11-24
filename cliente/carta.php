@@ -60,7 +60,7 @@
                 while ($row=mysqli_fetch_array($result)){
                   // Mostramos las mesas que hay en la base de datos
                   echo "<div class='product-image'>";
-                    echo "<img src='https://placehold.co/600x380/1c2230/f5b800?text=Hamburguesa+Reactor+Arc' alt=".$row['nombre'].">";
+                    echo "<img src='' alt=".$row['nombre'].">";
                     echo "<span class='hero-tag tag-".$row['tag']."'>IRON MAN</span>";
                   echo "</div>";
                   echo "<span class='availability-pill'></span>";
@@ -72,10 +72,10 @@
                           echo "</div>";
                           echo "<p class='product-desc'>".$row['descprod']."</p>";
                   echo "<div class='quantity-control'>";
-                      echo "<label for='prod-".$row['nombre']."'>Cantidad</label>";
+                      echo "<label for='".$row['codProducto']."'>Cantidad</label>";
                       echo "<div class='quantity-stepper'>";
                         echo "<button type='button' class='qty-btn minus' onclick='this.nextElementSibling.stepDown()' aria-label='Quitar una unidad'>&minus;</button>";
-                        echo "<input type='number' id='prod-".$row['nombre']."' name='cantidad_".$row['nombre']."' min='0' max=".$row['stock']." value='0'>";
+                        echo "<input type='number' id='".$row['codProducto']."' name='".$row['codProducto']."' min='0' max=".$row['stock']." value='0'>";
                         echo "<button type='button' class='qty-btn plus' onclick='this.previousElementSibling.stepUp()' aria-label='Añadir una unidad'>&plus;</button>";
                       echo "</div>";
                     echo "</div>";
@@ -105,7 +105,7 @@
                 while ($row=mysqli_fetch_array($result)){
                   // Mostramos las mesas que hay en la base de datos
                   echo "<div class='product-image'>";
-                    echo "<img src='https://placehold.co/600x380/1c2230/f5b800?text=Hamburguesa+Reactor+Arc' alt=".$row['nombre'].">";
+                    echo "<img src='' alt=".$row['nombre'].">";
                     echo "<span class='hero-tag tag-".$row['tag']."'>IRON MAN</span>";
                   echo "</div>";
                   echo "<span class='availability-pill'></span>";
@@ -117,10 +117,10 @@
                           echo "</div>";
                           echo "<p class='product-desc'>".$row['descprod']."</p>";
                   echo "<div class='quantity-control'>";
-                      echo "<label for='prod-".$row['nombre']."'>Cantidad</label>";
+                      echo "<label for='".$row['codProducto']."'>Cantidad</label>";
                       echo "<div class='quantity-stepper'>";
                         echo "<button type='button' class='qty-btn minus' onclick='this.nextElementSibling.stepDown()' aria-label='Quitar una unidad'>&minus;</button>";
-                        echo "<input type='number' id='prod-".$row['nombre']."' name='cantidad_".$row['nombre']."' min='0' max=".$row['stock']." value='0'>";
+                        echo "<input type='number' id='".$row['codProducto']."' name='".$row['codProducto']."' min='0' max=".$row['stock']." value='0'>";
                         echo "<button type='button' class='qty-btn plus' onclick='this.previousElementSibling.stepUp()' aria-label='Añadir una unidad'>&plus;</button>";
                       echo "</div>";
                     echo "</div>";
@@ -150,7 +150,7 @@
                 while ($row=mysqli_fetch_array($result)){
                   // Mostramos las mesas que hay en la base de datos
                   echo "<div class='product-image'>";
-                    echo "<img src='https://placehold.co/600x380/1c2230/f5b800?text=Hamburguesa+Reactor+Arc' alt=".$row['nombre'].">";
+                    echo "<img src='' alt=".$row['nombre'].">";
                     echo "<span class='hero-tag tag-".$row['tag']."'>IRON MAN</span>";
                   echo "</div>";
                   echo "<span class='availability-pill'></span>";
@@ -162,10 +162,10 @@
                           echo "</div>";
                           echo "<p class='product-desc'>".$row['descprod']."</p>";
                   echo "<div class='quantity-control'>";
-                      echo "<label for='prod-".$row['nombre']."'>Cantidad</label>";
+                      echo "<label for='".$row['codProducto']."'>Cantidad</label>";
                       echo "<div class='quantity-stepper'>";
                         echo "<button type='button' class='qty-btn minus' onclick='this.nextElementSibling.stepDown()' aria-label='Quitar una unidad'>&minus;</button>";
-                        echo "<input type='number' id='prod-".$row['nombre']."' name='cantidad_".$row['nombre']."' min='0' max=".$row['stock']." value='0'>";
+                        echo "<input type='number' id='".$row['codProducto']."' name='".$row['codProducto']."' min='0' max=".$row['stock']." value='0'>";
                         echo "<button type='button' class='qty-btn plus' onclick='this.previousElementSibling.stepUp()' aria-label='Añadir una unidad'>&plus;</button>";
                       echo "</div>";
                     echo "</div>";
@@ -195,7 +195,7 @@
                 while ($row=mysqli_fetch_array($result)){
                   // Mostramos las mesas que hay en la base de datos
                   echo "<div class='product-image'>";
-                    echo "<img src='https://placehold.co/600x380/1c2230/f5b800?text=Hamburguesa+Reactor+Arc' alt=".$row['nombre'].">";
+                    echo "<img src='' alt=".$row['nombre'].">";
                     echo "<span class='hero-tag tag-".$row['tag']."'>IRON MAN</span>";
                   echo "</div>";
                   echo "<span class='availability-pill'></span>";
@@ -207,10 +207,10 @@
                           echo "</div>";
                           echo "<p class='product-desc'>".$row['descprod']."</p>";
                   echo "<div class='quantity-control'>";
-                      echo "<label for='prod-".$row['nombre']."'>Cantidad</label>";
+                      echo "<label for='".$row['codProducto']."'>Cantidad</label>";
                       echo "<div class='quantity-stepper'>";
                         echo "<button type='button' class='qty-btn minus' onclick='this.nextElementSibling.stepDown()' aria-label='Quitar una unidad'>&minus;</button>";
-                        echo "<input type='number' id='prod-".$row['nombre']."' name='cantidad_".$row['nombre']."' min='0' max=".$row['stock']." value='0'>";
+                        echo "<input type='number' id='".$row['codProducto']."' name='".$row['codProducto']."' min='0' max=".$row['stock']." value='0'>";
                         echo "<button type='button' class='qty-btn plus' onclick='this.previousElementSibling.stepUp()' aria-label='Añadir una unidad'>&plus;</button>";
                       echo "</div>";
                     echo "</div>";
