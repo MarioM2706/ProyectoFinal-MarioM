@@ -21,8 +21,9 @@
         <h1>STARK BISTRO</h1>
       </div>
       <nav class="nav-links">
-        <a href="#carta" class="active">Carta</a>
-        <a href="#datos-pedido">Finalizar Pedido</a>
+        <a href="carta.php" class="active">Carta</a>
+        <!--<a href="#datos-pedido">Finalizar Pedido</a>-->
+        <a href="pedido_cliente.php">Mi pedido</a>
         <!--<a href="index.html" class="btn-nav">Acceso Agente</a>-->
         <a href="../includes/cerrarsesion.php" class="btn-nav">Cerrar Sesion</a>
       </nav>
@@ -37,7 +38,7 @@
     </section>
 
     <!-- Formulario completo que engloba la carta y los datos de entrega -->
-    <form class="order-form" action="../comprobar_ronda.php" method="POST">
+    <form class="order-form" action="comprobar_ronda.php" method="POST">
       
       <!-- Contenedor general de la carta -->
       <section id="carta" aria-label="Carta del restaurante">
