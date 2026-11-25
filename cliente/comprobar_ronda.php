@@ -12,7 +12,7 @@
     $result4=mysqli_query($conn, $consulta3);
     echo mysqli_error($conn);
     
-    // Guardamos todos el codigo de la mesa en una variable
+    // Guardamos el codigo de la mesa en una variable
     $datosmesa=mysqli_fetch_assoc($result4);
     // Desglosamos cada campo en una variable diferente
     $_SESSION['codMesa'] = $datosmesa['codMesa'];

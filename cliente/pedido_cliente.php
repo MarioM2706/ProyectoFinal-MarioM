@@ -36,7 +36,46 @@
       <p>Consulta en tiempo real los platos solicitados por tu mesa, su estado de preparación y el importe total acumulado hasta el momento.</p>
 
       <div class="session-strip">
-        <div class="strip-item">
+        <?php 
+            // Iniciamos sesion y conectamos con la base de datos
+            session_start();
+            include __DIR__ . '/../includes/conexion.php';
+
+            // Obtenemos los datos de la mesa que tiene asignada el cliente
+
+            // Primero necesitamos el dni del cliente que ha iniciado la sesion
+            $cliente = $_SESSION['dni'];
+
+            // Luego el nombre del usuario
+            $nombre = $_SESSION['nomu'];
+    
+            // Obtenemos todos los datos de la mesa
+            $consulta = "SELECT * FROM mesa WHERE dueño='$cliente'";
+            //echo $consulta;
+            $result=mysqli_query($conn, $consulta);
+            echo mysqli_error($conn);
+    
+            // Guardamos los datos de la mesa en una variable
+            $datosmesa=mysqli_fetch_assoc($result);
+
+            // Desglosamos cada campo en una variable diferente
+            $codmesa = $datosmesa['codMesa'];
+            $nommesa = $datosmesa['nombre'];
+            $zonamesa = $datosmesa['zona'];
+            $comensales = $datosmesa['comensales'];
+
+            // Mostramos los datos en la pagina
+            echo "<div class='strip-item'>";
+                echo "<span>Mesa asignada</span>";
+                echo "<strong>Mesa ".$codmesa." &mdash; ".$nommesa."</strong>";
+            echo "</div>";
+            echo "<div class='strip-item'>";
+                echo "<span>Titular</span>";
+                echo "<strong>".$nombre." (".$comensales." comensales)</strong>";
+            echo "</div>";
+
+        ?>
+        <!--<div class="strip-item">
           <span>Mesa asignada</span>
           <strong>Mesa 01 &mdash; Torre Stark</strong>
         </div>
@@ -44,140 +83,150 @@
           <span>Titular</span>
           <strong>Tony Stark (3 comensales)</strong>
         </div>
-        <!--<div class="strip-item">
-          <span>Estado de cuenta</span>
-          <strong class="text-cyan">Abierta en sala</strong>
-        </div>-->
-      </div>
+      </div>-->
     </section>
 
     <!-- Distribución principal: Lista de artículos + Resumen económico -->
-    <div class="order-layout">
+    < class="order-layout">
+        <?php
+            // Conectamos con la base de datos e iniciamos sesion
+            include __DIR__ . '/../includes/conexion.php';
 
-      <!-- Columna izquierda: Artículos pedidos -->
-      <section class="items-panel" aria-labelledby="titulo-articulos">
-        <header class="panel-header">
-          <div>
-            <span class="kicker">DESGLOSE DE CONSUMICIONES</span>
-            <h3 id="titulo-articulos">ARTÍCULOS PEDIDOS (6 UNIDADES)</h3>
-          </div>
-          <a href="carta.php" class="btn-add-more">+ PEDIR MÁS PLATOS</a>
-        </header>
+            // Obtenemos el dni del usuario que tiene la sesion abierta y la fecha de hoy
+            $cliente = $_SESSION['dni'];
+            $hoy = date('Y-m-d');
 
-        <div class="ordered-list">
+            $consulta = "SELECT SUM(cantidad) AS total FROM prodronda WHERE ronda IN (SELECT codigoRonda FROM ronda WHERE cliente='$cliente' AND fecha='$hoy')";
+            $resultado = mysqli_query($conn, $consulta);
+            $fila = mysqli_fetch_assoc($resultado);
 
-          <!-- Artículo 1 -->
-          <article class="ordered-card">
-            <img src="https://placehold.co/160x120/1c2230/f5b800?text=Reactor+Arc" alt="Hamburguesa Reactor Arc">
-            <div class="ordered-info">
-              <div class="ordered-top">
-                <span class="hero-tag tag-gold">IRON MAN</span>
-                <span class="prep-status status-served">✓ SERVIDO EN MESA</span>
-              </div>
-              <h4>Hamburguesa Reactor Arc</h4>
-              <p class="item-note">Nota: Sin cebolla en una de las unidades &bull; 14,50 € / ud.</p>
-              <div class="ordered-bottom">
-                <span class="qty-pill">Cantidad: <strong>2 uds.</strong></span>
-                <strong class="line-subtotal">29,00 €</strong>
-              </div>
-            </div>
-          </article>
+            // Si no hay pedidos todavía, SUM devuelve NULL; con ?? 0 te aseguras de que valga 0
+            $totalProductos = $fila['total'];
 
-          <!-- Artículo 2 -->
-          <article class="ordered-card">
-            <img src="https://placehold.co/160x120/1c2230/e23636?text=Shawarma+NY" alt="Shawarma Batalla de NY">
-            <div class="ordered-info">
-              <div class="ordered-top">
-                <span class="hero-tag tag-red">VENGADORES</span>
-                <span class="prep-status status-served">✓ SERVIDO EN MESA</span>
-              </div>
-              <h4>Shawarma Batalla de NY</h4>
-              <p class="item-note">Salsa de yogur con ajo y toque picante &bull; 12,00 € / ud.</p>
-              <div class="ordered-bottom">
-                <span class="qty-pill">Cantidad: <strong>1 ud.</strong></span>
-                <strong class="line-subtotal">12,00 €</strong>
-              </div>
-            </div>
-          </article>
+             // Mostramos los datos en la web
+                // Columna izquierda: Artículos pedidos
+                echo "<section class='items-panel' aria-labelledby='titulo-articulos'>";
+                echo "<header class='panel-header'>";
+                    echo "<div>";
+                        echo "<span class='kicker'>DESGLOSE DE CONSUMICIONES</span>";
+                        echo "<h3 id='titulo-articulos'>ARTÍCULOS PEDIDOS (".$totalProductos." UNIDADES)</h3>";
+                    echo "</div>";
+                    echo "<a href='carta.php' class='btn-add-more'>+ PEDIR MÁS PLATOS</a>";
+                echo "</header>";
+      
+                echo "<div class='ordered-list'>";
+        ?>
 
-          <!-- Artículo 3 -->
-          <article class="ordered-card">
-            <img src="https://placehold.co/160x120/1c2230/00e5ff?text=Elixir+Trueno" alt="Elixir del Trueno">
-            <div class="ordered-info">
-              <div class="ordered-top">
-                <span class="hero-tag tag-cyan">THOR</span>
-                <span class="prep-status status-preparing">EN PREPARACIÓN</span>
-              </div>
-              <h4>Elixir del Trueno</h4>
-              <p class="item-note">Jarra helada de frutos azules, lima y menta &bull; 6,50 € / ud.</p>
-              <div class="ordered-bottom">
-                <span class="qty-pill">Cantidad: <strong>3 uds.</strong></span>
-                <strong class="line-subtotal">19,50 €</strong>
-              </div>
-            </div>
-          </article>
+        <?php
+            // Conectamos con la base de datos e iniciamos sesion
+            include __DIR__ . '/../includes/conexion.php';
 
-        </div>
+            // Obtenemos el dni del usuario que tiene la sesion abierta y la fecha de hoy
+            $cliente = $_SESSION['dni'];
+            $hoy = date('Y-m-d');
+
+            // Consulta que obtiene los datos de cada producto y la suma de cantidades pedidas hoy
+            $consulta = "SELECT p.nombre, p.precio, p.tag, SUM(pr.cantidad) AS cantidad_pedida
+                        FROM producto p
+                        INNER JOIN prodronda pr ON p.codProducto = pr.producto
+                        INNER JOIN ronda r ON pr.ronda = r.codigoRonda
+                        WHERE r.cliente = '$cliente' AND r.fecha = '$hoy'
+                        GROUP BY p.codProducto, p.nombre, p.precio, p.tag";
+            $resultado = mysqli_query($conn, $consulta);
+
+            // Mostramos en la web
+            while ($row = mysqli_fetch_array($resultado)) {
+                $subtotal = $row['precio'] * $row['cantidad_pedida'];
+
+                // Artículos
+                echo "<article class='ordered-card'>";
+                    echo "<img src='' alt='".$row['nombre']."'>";
+                    echo "<div class='ordered-info'>";
+                        echo "<div class='ordered-top'>";
+                            echo "<span class='hero-tag tag-".$row['tag']."'>IRON MAN</span>";
+                        echo "</div>";
+                        echo "<h4>".$row['nombre']."</h4>";
+                        echo "<p class='item-note'>".$row['precio']." € / ud.</p>";
+                        echo "<div class='ordered-bottom'>";
+                            echo "<span class='qty-pill'>Cantidad: <strong>".$row['cantidad_pedida']." uds.</strong></span>";
+                            echo "<strong class='line-subtotal'>".number_format($subtotal, 2, ',', '.')." €</strong>";
+                        echo "</div>";
+                    echo "</div>";
+                echo "</article>";
+            }
+            ?>
       </section>
 
-      <!-- Columna derecha: Ticket con total acumulado y solicitud de cuenta -->
-      <aside class="summary-panel" aria-labelledby="titulo-resumen">
-        <header class="summary-header">
-          <span class="kicker">TICKET EN CURSO</span>
-          <h3 id="titulo-resumen">TOTAL ACUMULADO</h3>
-        </header>
 
-        <div class="receipt-lines">
-          <div class="receipt-row">
-            <span>2x Hamburguesa Reactor Arc</span>
-            <span>29,00 €</span>
-          </div>
-          <div class="receipt-row">
-            <span>1x Shawarma Batalla de NY</span>
-            <span>12,00 €</span>
-          </div>
-          <div class="receipt-row">
-            <span>3x Elixir del Trueno</span>
-            <span>19,50 €</span>
-          </div>
-        </div>
+      <!-- Formulario para solicitar la cuenta al camarero -->
+      <form class="request-bill-form" action="#" method="POST">
+        <input type="hidden" name="comanda_id" value="104">
+        <input type="hidden" name="mesa_id" value="1">
 
-        <div class="receipt-breakdown">
-          <div class="breakdown-row">
-            <span>Base imponible</span>
-            <span>55,00 €</span>
-          </div>
-          <div class="breakdown-row">
-            <span>IVA incluido (10%)</span>
-            <span>5,50 €</span>
-          </div>
-        </div>
+        <br>
 
-        <div class="grand-total-box">
-          <span>TOTAL A PAGAR</span>
-          <strong>60,50 €</strong>
-        </div>
+      <?php
+    // Conectamos con la base de datos e iniciamos sesion
+    include __DIR__ . '/../includes/conexion.php';
 
-        <!-- Formulario para solicitar la cuenta al camarero -->
-        <form class="request-bill-form" action="#" method="POST">
-          <input type="hidden" name="comanda_id" value="104">
-          <input type="hidden" name="mesa_id" value="1">
+    // Obtenemos el dni del usuario que tiene la sesion abierta y la fecha de hoy
+    $cliente = $_SESSION['dni'];
+    $hoy = date('Y-m-d');
 
-          <div class="input-group">
-            <label for="metodo-pago">Método de pago preferido</label>
-            <select id="metodo-pago" name="metodo_pago" required>
-              <option value="tarjeta">Tarjeta Bancaria / Stark Pay</option>
-              <option value="efectivo">Efectivo en mesa</option>
-              <option value="dividir">Dividir cuenta entre comensales</option>
-            </select>
-          </div>
+    // Consulta que obtiene los datos de cada producto y la suma de cantidades pedidas hoy
+    $consulta = "SELECT p.nombre, p.precio, p.tag, SUM(pr.cantidad) AS cantidad_pedida
+                 FROM producto p
+                 INNER JOIN prodronda pr ON p.codProducto = pr.producto
+                 INNER JOIN ronda r ON pr.ronda = r.codigoRonda
+                 WHERE r.cliente = '$cliente' AND r.fecha = '$hoy'
+                 GROUP BY p.codProducto, p.nombre, p.precio, p.tag";
+    $resultado = mysqli_query($conn, $consulta);
 
-          <button type="submit" class="btn-bill">PEDIR LA CUENTA AL CAMARERO</button>
-          <a href="carta.php" class="btn-continue">SEGUIR PIDIENDO DE LA CARTA</a>
-        </form>
-      </aside>
+    // Variables
+    $base = 0;  // Precio base
+    $iva = 10;  // Porcentaje de iva
 
-    </div>
+    echo "<div class='receipt-lines'>";
+
+    // Recorremos solo las líneas de productos
+    while ($row = mysqli_fetch_array($resultado)) {
+        $precioprod = (float)$row['precio'] * (int)$row['cantidad_pedida'];     // Precio del total de la cantidad de cada productos
+        $base = $base + $precioprod;                                            // Precio base sin iva
+
+        // Mostramos
+        echo "<div class='receipt-row'>";
+            echo "<span>".$row['cantidad_pedida']."x ".$row['nombre']."</span>";
+            echo "<span>".$precioprod." €</span>";
+        echo "</div>";
+    }
+
+    echo "</div>";
+
+    $precioiva = ($base * $iva) / 100;  // Cantidad del precio total en iva
+    $total = $base + $precioiva;        // Precio final, con todo
+
+    echo "<div class='receipt-breakdown'>";
+        echo "<div class='breakdown-row'>";
+            echo "<span>Base imponible</span>";
+            echo "<span>".$base." €</span>";
+        echo "</div>";
+        echo "<div class='breakdown-row'>";
+            echo "<span>IVA (10%)</span>";
+            echo "<span>".$precioiva." €</span>";
+        echo "</div>";
+    echo "</div>";
+
+    echo "<div class='grand-total-box'>";
+        echo "<span>TOTAL A PAGAR</span>";
+        echo "<strong>".$total." €</strong>";
+    echo "</div>";
+?>
+
+  <button type="submit" class="btn-bill">PEDIR LA CUENTA AL CAMARERO</button>
+  <a href="carta.php" class="btn-continue">SEGUIR PIDIENDO DE LA CARTA</a>
+</form>
+</aside>
+
   </main>
 
   <footer class="main-footer">
