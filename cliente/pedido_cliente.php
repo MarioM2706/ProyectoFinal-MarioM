@@ -44,10 +44,10 @@
           <span>Titular</span>
           <strong>Tony Stark (3 comensales)</strong>
         </div>
-        <div class="strip-item">
+        <!--<div class="strip-item">
           <span>Estado de cuenta</span>
           <strong class="text-cyan">Abierta en sala</strong>
-        </div>
+        </div>-->
       </div>
     </section>
 
