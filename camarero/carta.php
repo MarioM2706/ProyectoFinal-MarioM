@@ -12,7 +12,7 @@
 <body>
   <!-- Incluimos la seguridad -->
    <?php include("seguridad_camarero.php"); ?>
-
+   
   <!-- Barra superior -->
   <header class="topbar">
     <div class="topbar-inner">
@@ -23,7 +23,9 @@
       <nav class="nav-links">
         <a href="index.php">Control de Sala</a>
         <a href="carta.php" class="active">Carta</a>
-        <a href="#" class="btn-nav">Cerrar sesion</a>
+        <!--<a href="#datos-pedido">Finalizar Pedido</a>-->
+        <!--<a href="index.html" class="btn-nav">Acceso Agente</a>-->
+        <a href="../includes/cerrarsesion.php" class="btn-nav">Cerrar Sesion</a>
       </nav>
     </div>
   </header>
@@ -32,17 +34,165 @@
     <section class="hero-banner">
       <span class="badge">MENÚ OFICIAL &bull; TORRE DE LOS VENGADORES</span>
       <h2>ELIGE TUS PROVISIONES DE COMBATE</h2>
-      <p>En esta pagina solo podras ver los productos</p>
+      <p>En esta pagina solo puedes ver los productos.</p>
     </section>
 
     <!-- Formulario completo que engloba la carta y los datos de entrega -->
     <form class="order-form" action="#" method="POST">
       
-      <!-- Cuadrícula de productos -->
-      <section id="carta" class="menu-grid" aria-label="Carta del restaurante">
+      <!-- Contenedor general de la carta -->
+      <section id="carta" aria-label="Carta del restaurante">
+
+        <!-- Bebidas cat 1 -->
+        <section class="hero-banner">
+          <h2>Bebidas</h2>
+        </section>
+
+        <section class="menu-grid">
+          <article class="product-card">
+            <?php 
+                include __DIR__ . '/../includes/conexion.php';
+
+                //Lógica del fichero
+                $consulta="Select * from producto WHERE stock>=1 AND cat=1";
+
+                $result=mysqli_query($conn,$consulta);
+
+                while ($row=mysqli_fetch_array($result)){
+                  // Mostramos las mesas que hay en la base de datos
+                  echo "<div class='product-image'>";
+                    echo "<img src='' alt=".$row['nombre'].">";
+                    echo "<span class='hero-tag tag-".$row['tag']."'>IRON MAN</span>";
+                  echo "</div>";
+                  echo "<span class='availability-pill'></span>";
+                  echo "</div>";
+                        echo "<div class='product-content'>";
+                          echo "<div class='product-header'>";
+                            echo "<h3>".$row['nombre']."</h3>";
+                            echo "<span class='price'>".$row['precio']."€</span>";
+                          echo "</div>";
+                          echo "<p class='product-desc'>".$row['descprod']."</p>";
+                  echo "</div>";
+                }
+              //Cerramos la conexión
+              mysqli_close($conn);
+            ?>
+          </article>
+        </section>
+
+        <!-- Entrantes cat 2 -->
+        <section class="hero-banner">
+          <h2>Entrantes</h2>
+        </section>
+
+        <section class="menu-grid">
+          <article class="product-card">
+            <?php 
+                include __DIR__ . '/../includes/conexion.php';
+
+                //Lógica del fichero
+                $consulta="Select * from producto WHERE stock>=1 AND cat=2";
+
+                $result=mysqli_query($conn,$consulta);
+
+                while ($row=mysqli_fetch_array($result)){
+                  // Mostramos las mesas que hay en la base de datos
+                  echo "<div class='product-image'>";
+                    echo "<img src='' alt=".$row['nombre'].">";
+                    echo "<span class='hero-tag tag-".$row['tag']."'>IRON MAN</span>";
+                  echo "</div>";
+                  echo "<span class='availability-pill'></span>";
+                  echo "</div>";
+                        echo "<div class='product-content'>";
+                          echo "<div class='product-header'>";
+                            echo "<h3>".$row['nombre']."</h3>";
+                            echo "<span class='price'>".$row['precio']."€</span>";
+                          echo "</div>";
+                          echo "<p class='product-desc'>".$row['descprod']."</p>";
+                  echo "</div>";
+                }
+              //Cerramos la conexión
+              mysqli_close($conn);
+            ?>
+          </article>
+        </section>
+
+        <!-- Platos cat 3 -->
+        <section class="hero-banner">
+          <h2>Principales</h2>
+        </section>
+
+        <section class="menu-grid">
+          <article class="product-card">
+            <?php 
+                include __DIR__ . '/../includes/conexion.php';
+
+                //Lógica del fichero
+                $consulta="Select * from producto WHERE stock>=1 AND cat=3";
+
+                $result=mysqli_query($conn,$consulta);
+
+                while ($row=mysqli_fetch_array($result)){
+                  // Mostramos las mesas que hay en la base de datos
+                  echo "<div class='product-image'>";
+                    echo "<img src='' alt=".$row['nombre'].">";
+                    echo "<span class='hero-tag tag-".$row['tag']."'>IRON MAN</span>";
+                  echo "</div>";
+                  echo "<span class='availability-pill'></span>";
+                  echo "</div>";
+                        echo "<div class='product-content'>";
+                          echo "<div class='product-header'>";
+                            echo "<h3>".$row['nombre']."</h3>";
+                            echo "<span class='price'>".$row['precio']."€</span>";
+                          echo "</div>";
+                          echo "<p class='product-desc'>".$row['descprod']."</p>";
+                  echo "</div>";
+                }
+              //Cerramos la conexión
+              mysqli_close($conn);
+            ?>
+          </article>
+        </section>
+
+        <!-- Postres cat 4 -->
+        <section class="hero-banner">
+          <h2>Postres</h2>
+        </section>
+
+        <section class="menu-grid">
+          <article class="product-card">
+            <?php 
+                include __DIR__ . '/../includes/conexion.php';
+
+                //Lógica del fichero
+                $consulta="Select * from producto WHERE stock>=1 AND cat=4";
+
+                $result=mysqli_query($conn,$consulta);
+
+                while ($row=mysqli_fetch_array($result)){
+                  // Mostramos las mesas que hay en la base de datos
+                  echo "<div class='product-image'>";
+                    echo "<img src='' alt=".$row['nombre'].">";
+                    echo "<span class='hero-tag tag-".$row['tag']."'>IRON MAN</span>";
+                  echo "</div>";
+                  echo "<span class='availability-pill'></span>";
+                  echo "</div>";
+                        echo "<div class='product-content'>";
+                          echo "<div class='product-header'>";
+                            echo "<h3>".$row['nombre']."</h3>";
+                            echo "<span class='price'>".$row['precio']."€</span>";
+                          echo "</div>";
+                          echo "<p class='product-desc'>".$row['descprod']."</p>";
+                  echo "</div>";
+                }
+              //Cerramos la conexión
+              mysqli_close($conn);
+            ?>
+          </article>
+        </section>
         
-        <!-- Producto 1 -->
-        <article class="product-card">
+        <!-- Producto 1 cat 4 -->
+        <!-- <article class="product-card">
           <div class="product-image">
             <img src="https://placehold.co/600x380/1c2230/f5b800?text=Hamburguesa+Reactor+Arc" alt="Hamburguesa Reactor Arc">
             <span class="hero-tag tag-gold">IRON MAN</span>
@@ -53,10 +203,18 @@
               <span class="price">14,50 €</span>
             </div>
             <p class="product-desc">Doble carne de ternera madurada, queso cheddar fundido, bacon crujiente, cebolla caramelizada y salsa secreta Stark en pan brioche negro.</p>
+            <div class="quantity-control">
+              <label for="prod-hamburguesa">Cantidad</label>
+              <div class="quantity-stepper">
+                <button type="button" class="qty-btn minus" onclick="this.nextElementSibling.stepDown()" aria-label="Quitar una unidad">&minus;</button>
+                <input type="number" id="prod-hamburguesa" name="cantidad_hamburguesa" min="0" max="20" value="0">
+                <button type="button" class="qty-btn plus" onclick="this.previousElementSibling.stepUp()" aria-label="Añadir una unidad">&plus;</button>
+              </div>
+            </div>
           </div>
         </article>
 
-        <!-- Producto 2 -->
+         Producto 2 
         <article class="product-card">
           <div class="product-image">
             <img src="https://placehold.co/600x380/1c2230/e23636?text=Shawarma+Batalla+NY" alt="Shawarma Batalla de Nueva York">
@@ -68,10 +226,18 @@
               <span class="price">12,00 €</span>
             </div>
             <p class="product-desc">Pan pita artesanal relleno de pollo especiado al estilo tradicional, vegetales frescos, salsa de yogur con ajo y toque picante.</p>
+            <div class="quantity-control">
+              <label for="prod-shawarma">Cantidad</label>
+              <div class="quantity-stepper">
+                <button type="button" class="qty-btn minus" onclick="this.nextElementSibling.stepDown()" aria-label="Quitar una unidad">&minus;</button>
+                <input type="number" id="prod-shawarma" name="cantidad_shawarma" min="0" max="20" value="0">
+                <button type="button" class="qty-btn plus" onclick="this.previousElementSibling.stepUp()" aria-label="Añadir una unidad">&plus;</button>
+              </div>
+            </div>
           </div>
         </article>
 
-        <!-- Producto 3 -->
+         Producto 3 
         <article class="product-card">
           <div class="product-image">
             <img src="https://placehold.co/600x380/1c2230/4ade80?text=Costillas+Gamma+Hulk" alt="Costillas Gamma de Hulk">
@@ -83,10 +249,18 @@
               <span class="price">18,90 €</span>
             </div>
             <p class="product-desc">Costillar de cerdo asado a baja temperatura durante 8 horas, glaseado con barbacoa ahumada y acompañado de patatas rústicas.</p>
+            <div class="quantity-control">
+              <label for="prod-costillas">Cantidad</label>
+              <div class="quantity-stepper">
+                <button type="button" class="qty-btn minus" onclick="this.nextElementSibling.stepDown()" aria-label="Quitar una unidad">&minus;</button>
+                <input type="number" id="prod-costillas" name="cantidad_costillas" min="0" max="20" value="0">
+                <button type="button" class="qty-btn plus" onclick="this.previousElementSibling.stepUp()" aria-label="Añadir una unidad">&plus;</button>
+              </div>
+            </div>
           </div>
         </article>
 
-        <!-- Producto 4 -->
+         Producto 4 
         <article class="product-card">
           <div class="product-image">
             <img src="https://placehold.co/600x380/1c2230/ff4d4d?text=Chimichangas+Deadpool" alt="Chimichangas de Deadpool">
@@ -98,10 +272,18 @@
               <span class="price">11,50 €</span>
             </div>
             <p class="product-desc">Dos tortillas de trigo crujientes rellenas de ternera desmechada, frijoles negros, queso fundido, guacamole y pico de gallo.</p>
+            <div class="quantity-control">
+              <label for="prod-chimichangas">Cantidad</label>
+              <div class="quantity-stepper">
+                <button type="button" class="qty-btn minus" onclick="this.nextElementSibling.stepDown()" aria-label="Quitar una unidad">&minus;</button>
+                <input type="number" id="prod-chimichangas" name="cantidad_chimichangas" min="0" max="20" value="0">
+                <button type="button" class="qty-btn plus" onclick="this.previousElementSibling.stepUp()" aria-label="Añadir una unidad">&plus;</button>
+              </div>
+            </div>
           </div>
         </article>
 
-        <!-- Producto 5 -->
+         Producto 5 
         <article class="product-card">
           <div class="product-image">
             <img src="https://placehold.co/600x380/1c2230/00e5ff?text=Elixir+de+Asgard" alt="Elixir de Asgard">
@@ -113,10 +295,18 @@
               <span class="price">6,50 €</span>
             </div>
             <p class="product-desc">Bebida refrescante sin alcohol de frutos azules, lima, menta fresca y tónica con destellos cítricos servida en jarra helada.</p>
+            <div class="quantity-control">
+              <label for="prod-elixir">Cantidad</label>
+              <div class="quantity-stepper">
+                <button type="button" class="qty-btn minus" onclick="this.nextElementSibling.stepDown()" aria-label="Quitar una unidad">&minus;</button>
+                <input type="number" id="prod-elixir" name="cantidad_elixir" min="0" max="20" value="0">
+                <button type="button" class="qty-btn plus" onclick="this.previousElementSibling.stepUp()" aria-label="Añadir una unidad">&plus;</button>
+              </div>
+            </div>
           </div>
         </article>
 
-        <!-- Producto 6 -->
+         Producto 6 
         <article class="product-card">
           <div class="product-image">
             <img src="https://placehold.co/600x380/1c2230/c084fc?text=Tarta+Vibranium" alt="Tarta Vibranium">
@@ -128,8 +318,17 @@
               <span class="price">7,50 €</span>
             </div>
             <p class="product-desc">Mousse intenso de chocolate negro 70% con corazón de arándanos silvestres de Wakanda y crujiente de galleta de cacao.</p>
+            <div class="quantity-control">
+              <label for="prod-postre">Cantidad</label>
+              <div class="quantity-stepper">
+                <button type="button" class="qty-btn minus" onclick="this.nextElementSibling.stepDown()" aria-label="Quitar una unidad">&minus;</button>
+                <input type="number" id="prod-postre" name="cantidad_postre" min="0" max="20" value="0">
+                <button type="button" class="qty-btn plus" onclick="this.previousElementSibling.stepUp()" aria-label="Añadir una unidad">&plus;</button>
+              </div>
+            </div>
           </div>
-        </article>
+        </article> -->
+
       </section>
     </form>
   </main>
@@ -140,3 +339,4 @@
 
 </body>
 </html>
+```[cite: 2]

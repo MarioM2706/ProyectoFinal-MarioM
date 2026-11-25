@@ -100,7 +100,7 @@
             $resultado = mysqli_query($conn, $consulta);
             $fila = mysqli_fetch_assoc($resultado);
 
-            // Si no hay pedidos todavía, SUM devuelve NULL; con ?? 0 te aseguras de que valga 0
+            // Guardamos la cuenta del total de productos
             $totalProductos = $fila['total'];
 
              // Mostramos los datos en la web
