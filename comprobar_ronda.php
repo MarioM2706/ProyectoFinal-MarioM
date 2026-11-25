@@ -15,6 +15,12 @@
         echo mysqli_error($conn);
     }
 
+    // Obtenemos la fecha de hoy
+    
+
+    // Insertamos una nueva ronda a la mesa del cliente
+    $consulta2 = "INSERT INTO `ronda`(`codigoRonda`, `codigoCuenta`, `fecha`, `cliente`, `mesa`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')";
+
     header("LOCATION:cliente/carta.php");
 
     mysqli_close($conn);

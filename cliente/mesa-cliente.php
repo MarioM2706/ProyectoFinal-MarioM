@@ -2,6 +2,9 @@
     // Obtenemos el codigo de la mesa seleccionada por el cliente
     $mesaocupar=$_GET['mesaocupar'];
 
+    // La guardamos en una variable de sesion
+    $_SESSION['mesacliente'] = $mesaocupar;
+
     // Conectamos con la base de datos e iniciamos sesion
     include __DIR__ . '/../includes/conexion.php';
     session_start();
