@@ -23,5 +23,5 @@
     echo mysqli_error($conn);
 
     // Redirigmos a la carta al seleccionar mesa
-    // header("LOCATION:cliente/carta.php");
+    header("LOCATION:carta.php");
 ?>
