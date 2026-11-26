@@ -141,8 +141,10 @@
                         GROUP BY p.codProducto, p.nombre, p.precio, p.tag";
           $resultado2 = mysqli_query($conn, $consulta2);
 
+          // Variable del precio total de la mesa
           $totalMesa = 0;
 
+          // Mostramos los productos servidos (todos sin servir)
           while ($row = mysqli_fetch_array($resultado2)) {
               $subtotal = (float)$row['precio'] * (int)$row['cantidad_pedida'];
               $totalMesa += $subtotal;
