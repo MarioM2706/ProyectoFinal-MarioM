@@ -369,7 +369,7 @@ body {
 
 /* Etiqueta dinámica Pendiente / Servido */
 .item-status::after {
-  content: "PENDIENTE";
+  /*content: "PENDIENTE";*/
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.8px;

@@ -133,7 +133,7 @@
           echo "<div class='orders-list'>";
 
           // 2. Pedidos de ESTA mesa en el día de hoy (usando $consulta2)
-          $consulta2 = "SELECT p.nombre, p.precio, p.tag, pr.ronda, SUM(pr.cantidad) AS cantidad_pedida
+          $consulta2 = "SELECT p.nombre, p.precio, p.tag, pr.ronda, pr.servido, SUM(pr.cantidad) AS cantidad_pedida
                         FROM producto p
                         INNER JOIN prodronda pr ON p.codProducto = pr.producto
                         INNER JOIN ronda r ON pr.ronda = r.codigoRonda
@@ -144,6 +144,12 @@
           // Variable del precio total de la mesa
           $totalMesa = 0;
 
+          // Comprobamos si el producto esta servido o no
+          $est = "";
+          if(!isset($row['servido'])==1){
+            $est = "checked";
+          }
+
           // Mostramos los productos pedidos (todos sin servir)
           while ($row = mysqli_fetch_array($resultado2)) {
               $subtotal = (float)$row['precio'] * (int)$row['cantidad_pedida'];
@@ -151,7 +157,7 @@
 
               echo "<label class='order-item'>";
               echo "<input type='hidden' name='ronda_id' value='".$row['ronda']."'>";
-                echo "<input type='checkbox' name='servido[]' value='".$row['nombre']."'>";
+                echo "<input type='checkbox' name='servido[]' value='".$row['nombre']."' $est>";
                 echo "<span class='custom-check' aria-hidden='true'></span>";
                 echo "<span class='item-details'>";
                   echo "<span class='item-name'>".$row['cantidad_pedida']."x ".$row['nombre']."</span>";
